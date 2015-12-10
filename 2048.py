@@ -26,8 +26,11 @@ for i in range(4):
         blocks.append([pygame.Rect((i*100) + 30 , (j*100) + 135, 90, 90), WHITE])
 
 def buildText(i,j):
-        
-    text = myfont.render(board[j][i], True, BLUE)
+    
+    if board[j][i] == "0":        
+        text = myfont.render(" ", True, BLUE)
+    else:
+        text = myfont.render(board[j][i], True, BLUE)
     textRect = text.get_rect()
     textRect.centerx = i*100 + 75
     textRect.centery = j*100 + 180
@@ -38,6 +41,18 @@ def showText():
     for i in range(4):
         for j in range(4):
             window.blit(buildText(i,j)[0], buildText(i,j)[1])
+
+def gameOver():
+    #window.fill(WHITE)
+    label = myfont.render("GAME OVER", True, RED)
+    labelRect = label.get_rect()
+    labelRect.centerx = window.get_rect().centerx
+    labelRect.centery = window.get_rect().centery
+    window.blit(label, labelRect)
+    event = pygame.event.wait()
+    if event.type == QUIT:
+        pygame.quit()
+        sys.exit()
     
     
 while True:
@@ -56,6 +71,8 @@ while True:
             if event.key == K_RIGHT:                
                 board = main(board, "r")
 
+
+
     window.fill(WHITE)
     pygame.draw.rect(window, GREEN, pygame.Rect(25, 130, 400, 400))
 
@@ -65,6 +82,9 @@ while True:
 
         
     showText()
+
+    if checklose(board):
+        gameOver()
     
     pygame.display.update()
 
