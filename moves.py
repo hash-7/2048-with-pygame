@@ -23,35 +23,17 @@ def init_board():
     board[2][0] = "4"   
     board[2][1] = "2"
     board[2][2] = "32"
-    board[2][3] = "64"
+    board[2][3] = "1024"
     board[3][0] = "8"
-    board[3][1] = "4"
-    board[3][2] = "2"
-    board[3][3] = "256"   
+    board[3][1] = "4"  
+    board[3][2] = "1024"
+    board[3][3] = "516"   
     """
         
     return board    
  
-             
-
-          
+                      
                                                 
-def showboard(board):
-    """ Takes in a list (board), and prints out the board """
-    for line in board:
-        for item in line:
-            if item == "0":
-                print "     -",
-            elif int(item)/1000 > 0:
-                print " ", item,
-            elif int(item)/100 > 0:
-                print "  ", item,
-            elif int(item)/10 > 0:
-                print "   ", item,
-            else:
-                print "    ", item,
-        print "\n\n"
-
 def addNewNum(board, n):
     
     """Generates a 2 or 4, and set the number at a random location on board \

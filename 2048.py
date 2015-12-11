@@ -53,6 +53,19 @@ def gameOver():
     if event.type == QUIT:
         pygame.quit()
         sys.exit()
+
+def win():
+    window.fill(WHITE)
+    label = myfont.render("You WIN !!!!!", True, RED)
+    labelRect = label.get_rect()
+    labelRect.centerx = window.get_rect().centerx
+    labelRect.centery = window.get_rect().centery
+    window.blit(label, labelRect)
+    event = pygame.event.wait()
+    if event.type == QUIT:
+        pygame.quit()
+        sys.exit()
+    
     
     
 while True:
@@ -74,6 +87,8 @@ while True:
 
 
     window.fill(WHITE)
+    header = myfont.render("2048", True, BLUE)
+    window.blit(header, (30, 50))
     pygame.draw.rect(window, GREEN, pygame.Rect(25, 130, 400, 400))
 
         
@@ -85,6 +100,8 @@ while True:
 
     if checklose(board):
         gameOver()
+    elif checkwin(board):
+        win()
     
     pygame.display.update()
 
