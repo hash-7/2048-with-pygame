@@ -31,8 +31,7 @@ def init_board():
     """
         
     return board    
- 
-                      
+                       
                                                 
 def addNewNum(board, n):
     
@@ -49,7 +48,7 @@ def addNewNum(board, n):
         board[randomy][randomx] = newNum 
         
     
-def checkwin(board):
+def checkWin(board):
     """ Checks if the player has the number 2048 on the board. 
     If so, return True and print a "you win" statement. Otherwise, return False."""
     
@@ -59,6 +58,7 @@ def checkwin(board):
             if num == "2048":
                 win = True
     return win
+
                 
 def add(board, i_list, j_list, i_direction, j_direction):
     
@@ -70,18 +70,15 @@ def add(board, i_list, j_list, i_direction, j_direction):
     
     move is a counter that's later used to determine whether a move can still be made by the player.
     """
-    move = 0
+
     for i in i_list:
         for j in j_list:
                 
         #check if 2 numbers are the same, if yes, add them together
             if board[i][j] == board[i + i_direction][j + j_direction]:
                 board[i+ i_direction][j + j_direction] = str(int(board[i][j])+int(board[i+ i_direction][j+j_direction]))
-                if board[i][j] != "0":
-                    move += 1
                 board[i][j] = "0"
 
-    return move
     
 def push(board, i_list, j_list, i_direction, j_direction):
     
@@ -90,16 +87,13 @@ def push(board, i_list, j_list, i_direction, j_direction):
     i_direction, j_direction - an int, either 1, -1 or 0. Defines the direction of the push. 
     move is a counter that's later used to determine whether a move can still be made by the player.
     """
-   
-    move = 0
+    
     for i in i_list:
         for j in j_list:
             if board[i + i_direction][j + j_direction] == "0":
                 board[i + i_direction][j + j_direction] = board[i][j]
-                if board[i][j] != "0":
-                    move += 1
                 board[i][j] = "0"
-    return move                
+
 
 def pushDirection(board, UserInput):
     """
@@ -108,7 +102,6 @@ def pushDirection(board, UserInput):
     UserInput - a str
     """
     
-    move = 0
     if UserInput == "u":
         i_list, j_list = range(1,4), range(4)
         i_direction, j_direction = -1, 0
@@ -123,14 +116,11 @@ def pushDirection(board, UserInput):
         i_direction, j_direction = 0, 1
        
     for i in range(4):
-        move += push(board, i_list, j_list, i_direction, j_direction)
-    move += add(board, i_list, j_list, i_direction, j_direction)
+        push(board, i_list, j_list, i_direction, j_direction)
+    add(board, i_list, j_list, i_direction, j_direction)
     for i in range(4):
-        move += push(board, i_list, j_list, i_direction, j_direction)
+        push(board, i_list, j_list, i_direction, j_direction)
     
-    return move
-
-
 
 def checkCell(board, i, j):
     move_i = []
@@ -153,6 +143,7 @@ def checkCell(board, i, j):
             return True
     return False
 
+
 def canMove(board):
 
     board_size = len(board)
@@ -164,7 +155,7 @@ def canMove(board):
                 return True
     return False
 
-def checklose(board):
+def checkLose(board):
     
     """Takes in a list (board), return True the player does not lose (if there is still 0 in the list or \
     if any move can still be made) otherwise False"""
@@ -180,16 +171,12 @@ def checklose(board):
     
 def main(board, UserInput):
                                          
-    if not checklose(board) and not checkwin(board):
+    if not checkLose(board) and not checkWin(board):
                                                                   
-        move = pushDirection(board, UserInput) 
+        move = pushDirection(board, UserInput)        
         if move != 0:
-            addNewNum(board, 1)
+            addNewNum(board, 1)            
     return board
         
     
-if __name__=='__main__':
-    
-    main("u")
 
-    

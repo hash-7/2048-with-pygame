@@ -9,10 +9,8 @@ pygame.display.set_caption("2048")
 
 
 WHITE = (255,255,255)
-BLACK = (0,0,0)
 GREEN = (77,204,0)
 RED = (255,0,0)
-PINK = (255,204,255)
 BLUE = (0,0,255)
 TEAL = (0,255,255)
 
@@ -98,9 +96,9 @@ while True:
         
     showText()
 
-    if checklose(board):
+    if checkLose(board):
         gameOver()
-    elif checkwin(board):
+    elif checkWin(board):
         win()
     
     pygame.display.update()
