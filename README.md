@@ -43,3 +43,5 @@ and 8 4 when pushed left:
 If the player gets the number "2048" on the board, he/she wins.
 
 The player looses if all the slots are filled in and he/she cannot make any move at all.
+
+<img src="http://i.imgur.com/jVxmWuq.png" height="350px">
