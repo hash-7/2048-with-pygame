@@ -5,6 +5,7 @@ Check out my simpler version of 2048, also implemented with python, but not the 
 
 ##Rules
 <img src="http://imgur.com/0kDUWx4.png" height="200px">
+
 There will be 16 empty slots on a 4x4 board.
 
 The player will start with two numbers that are either two or four, on two random slots on the board.
