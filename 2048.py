@@ -3,7 +3,7 @@ from pygame.locals import *
 from moves import *
 
 pygame.init()
-window = pygame.display.set_mode((450, 550), 0, 32)
+window = pygame.display.set_mode((450, 550))
 pygame.display.set_caption("2048")
 
 #Setting color & font
